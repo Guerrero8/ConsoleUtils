@@ -1,34 +1,13 @@
-package org.adios.payasos;
-
-import lombok.Getter;
-import lombok.Setter;
+package org.adios.payasos.service;
 
 import java.util.Random;
 
-
-@Getter
-@Setter
-public class Person {
-
-    private String firstName;
-    private String lastName;
-    private String login;
-
-    public Person(String firstName, String lastName, String login) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.login = login;
-    }
-
-    public Person() {
-
-    }
-
-    public static Person createPerson(String firstName, String lastName, String login) {
+public class PersonService {
+    public static Person createPersonFromConstructor(String firstName, String lastName, String login) {
         return new Person(firstName, lastName, login);
     }
 
-    public static Person createPerson1() {
+    public static Person createPersonFromSetters() {
         Person person = new Person();
         person.setFirstName("клава");
         person.setLastName("кока");
@@ -42,13 +21,11 @@ public class Person {
         return nextInt.toString();
     }
 
-    public static Person createPerson2() {
+    public static Person createPersonFromRandom() {
         Person person = new Person();
         person.setFirstName(createFakeField());
         person.setLastName(createFakeField());
         person.setLogin(createFakeField());
         return person;
     }
-
 }
-

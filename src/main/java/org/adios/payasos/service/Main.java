@@ -1,7 +1,5 @@
-package org.adios.payasos;
+package org.adios.payasos.service;
 
-
-import org.adios.payasos.service.ConsoleService;
 
 public class Main {
     public static void main(String[] args) {
