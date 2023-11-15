@@ -1,7 +1,12 @@
 package org.adios.payasos.service;
 
-import java.sql.SQLOutput;
+import org.adios.payasos.entity.Person;
+import org.adios.payasos.service.ConsoleService;
+import org.adios.payasos.service.PersonService;
+
+import java.util.List;
 import java.util.Scanner;
+
 
 public class Dispatcher {
     Scanner scanner = new Scanner(System.in);
@@ -9,23 +14,22 @@ public class Dispatcher {
 
     public void invoke() {
 
-        boolean switchButton = false;
+        boolean switchButton1 = false;
 
-        try {
-            System.out.println("true или falce сука ты?");
-            switchButton = scanner.nextBoolean();
+ /**       try {
+            System.out.println("true или false сука ты?");
+            switchButton1 = scanner.nextBoolean();
         } catch (Exception exception) {
             System.out.println("нахуй иди, дибил");
-            switchButton = false;
-        }
+            switchButton1 = false;
+        }   **/
 
-        if (switchButton == true) {
+        if (switchButton1 == true) {
             consoleService.playerNickname();
             consoleService.playerLogin();
             consoleService.playerPasword();
-        } else if (switchButton == false) {
-
         }
+
         Person person = PersonService.createPersonFromConstructor("чики", "бамбони", "залупа");
         Person person1 = PersonService.createPersonFromSetters();
         Person person2 = PersonService.createPersonFromRandom();

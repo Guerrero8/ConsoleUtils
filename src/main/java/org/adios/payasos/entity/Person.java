@@ -1,4 +1,4 @@
-package org.adios.payasos.service;
+package org.adios.payasos.entity;
 
 import lombok.Getter;
 import lombok.Setter;
