@@ -14,17 +14,9 @@ public class Dispatcher {
 
     public void invoke() {
 
-        boolean switchButton1 = false;
+        boolean switchButton = false;
 
- /**       try {
-            System.out.println("true или false сука ты?");
-            switchButton1 = scanner.nextBoolean();
-        } catch (Exception exception) {
-            System.out.println("нахуй иди, дибил");
-            switchButton1 = false;
-        }   **/
-
-        if (switchButton1 == true) {
+        if (switchButton == true) {
             consoleService.playerNickname();
             consoleService.playerLogin();
             consoleService.playerPasword();
@@ -33,5 +25,7 @@ public class Dispatcher {
         Person person = PersonService.createPersonFromConstructor("чики", "бамбони", "залупа");
         Person person1 = PersonService.createPersonFromSetters();
         Person person2 = PersonService.createPersonFromRandom();
+        List<Person> fakePersonsforList = PersonService.createFakePersonsforList();
+        PersonService.jfwefniowjf(fakePersonsforList);
     }
 }

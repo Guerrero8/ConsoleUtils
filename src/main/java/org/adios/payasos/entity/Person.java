@@ -2,10 +2,12 @@ package org.adios.payasos.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 @Getter
 @Setter
+@ToString
 public class Person {
 
     private String firstName;

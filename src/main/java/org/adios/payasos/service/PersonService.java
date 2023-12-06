@@ -27,7 +27,7 @@ public class PersonService {
     }
 
     public static List<Person> createFakePersonsforList() {
-        List persons = new ArrayList<>();
+        List<Person> persons = new ArrayList<>();
         Person person = new Person();
         boolean switchButton2 = false;
         for (int i = 1; i <= 500; i++) {
@@ -41,6 +41,12 @@ public class PersonService {
             }
         }
         return persons;
+    }
+    public static void jfwefniowjf(List<Person> personList){
+        personList.forEach(person -> {
+            System.out.println(person.toString());
+        });
+
     }
 
 
