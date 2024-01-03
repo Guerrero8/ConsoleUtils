@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static org.adios.payasos.service.CreateFakePersonServise.createFakeField;
+
 public class PersonService {
     public static Person createPersonFromConstructor(String firstName, String lastName, String login) {
         return new Person(firstName, lastName, login);
@@ -20,17 +22,12 @@ public class PersonService {
         return person;
     }
 
-    public static String createFakeField() {
-        Random random = new Random();
-        Integer nextInt = random.nextInt();
-        return nextInt.toString();
-    }
-
     public static List<Person> createFakePersonsforList() {
         List<Person> persons = new ArrayList<>();
         Person person = new Person();
         boolean switchButton2 = false;
         for (int i = 1; i <= 500; i++) {
+            CreateFakePersonServise createFakePersonServise = new CreateFakePersonServise();
             person.setFirstName(createFakeField());
             person.setLastName(createFakeField());
             person.setLogin(createFakeField());
@@ -42,7 +39,7 @@ public class PersonService {
         }
         return persons;
     }
-    public static void jfwefniowjf(List<Person> personList){
+    public static void getPersonList(List<Person> personList){
         personList.forEach(person -> {
             System.out.println(person.toString());
         });
