@@ -24,9 +24,9 @@ public class PersonService {
 
     public static List<Person> createFakePersonsforList() {
         List<Person> persons = new ArrayList<>();
-        Person person = new Person();
         boolean switchButton2 = false;
         for (int i = 1; i <= 500; i++) {
+            Person person = new Person();
             CreateFakePersonServise createFakePersonServise = new CreateFakePersonServise();
             person.setFirstName(createFakeField());
             person.setLastName(createFakeField());

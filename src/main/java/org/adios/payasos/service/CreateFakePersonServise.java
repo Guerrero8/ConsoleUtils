@@ -16,5 +16,3 @@ public class CreateFakePersonServise {
         return symbolBuilder.toString();
     }
 }
-// при повторении в цикле выдает одинаковые имена
-// исправление опционально :)
