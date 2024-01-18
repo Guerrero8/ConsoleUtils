@@ -1,4 +1,4 @@
-package org.adios.payasos.service;
+package org.adios.payasos.controller;
 
 import org.adios.payasos.entity.Person;
 import org.adios.payasos.service.ConsoleService;
@@ -26,11 +26,12 @@ public class Dispatcher {
                         consoleService.playerPasword();
                     }
 
-                    Person person = PersonService.createPersonFromConstructor("чики", "бамбони", "залупа");
-                    Person person1 = PersonService.createPersonFromSetters();
-                    Person person2 = PersonService.createPersonFromRandom();
-                    List<Person> fakePersonsforList = PersonService.createFakePersonsforList();
-                    PersonService.getPersonList(fakePersonsforList);
+                    PersonService personService = new PersonService();
+                    Person person = personService.createPersonFromConstructor("чики", "бамбони", "залупа");
+                    Person person1 = personService.createPersonFromSetters();
+                    Person person2 = personService.createPersonFromRandom();
+                    List<Person> fakePersonsforList = personService.createFakePersonsforList();
+                    personService.getPersonList(fakePersonsforList);
                     System.out.println("\n\n");
                     break;
                 case "exit":
