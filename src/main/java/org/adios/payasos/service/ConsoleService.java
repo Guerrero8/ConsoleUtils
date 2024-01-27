@@ -27,30 +27,4 @@ public class ConsoleService {
         String pasword = scanner.nextLine();
         System.out.println("пороль на:\n" + pasword);
     }
-
-    public void addPersonMassege(List<Person> persons) {
-        if (persons.isEmpty()) {
-            System.out.println("Вы еще не создали пользователей, так что вам некому добавить сообщение.");
-        } else {
-            for (Person person : persons) {
-                System.out.println(person.getFirstName());
-            }
-            System.out.println("Выберете пользователя из списка.");
-            String desiredPerson = scanner.nextLine();
-                boolean found = false;
-                for (Person person : persons) {
-                    if (person.getFirstName().equalsIgnoreCase(desiredPerson)) {
-                        found = true;
-                        System.out.println("Введите новое сообщение для пользователя " + person.getFirstName());
-                        String message = scanner.nextLine();
-                        person.getMasseges().add(message);
-                        System.out.println("Сообщение успешно добавлено для пользователя " + person.getFirstName() + person.getMasseges());
-                        break;
-                    }
-                }
-                if (!found) {
-                    System.out.println("Пользователь с именем " + desiredPerson + " не найден.");
-                }
-        }
-    }
 }

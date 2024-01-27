@@ -36,7 +36,7 @@ public class Dispatcher {
                     System.out.println("\n\n");
                     break;
                 case "addmsg":
-                    consoleService.addPersonMassege(personService.getPersons());
+                    massagesServise.addPersonMassege(personService.getPersons());
                     break;
                 case "read":
                     massagesServise.readPersonMassages(personService.getPersons());
