@@ -2,17 +2,17 @@ package org.adios.payasos.service;
 
 import org.adios.payasos.entity.Person;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.Scanner;
 
 
 public class PersonService {
+    Scanner scanner = new Scanner(System.in);
+    List<Person> persons = new ArrayList<>();
     public Person createPersonFromConstructor(String firstName, String lastName, String login) {
         return new Person(firstName, lastName, login);
     }
-
     public Person createPersonFromSetters() {
         Person person = new Person();
         person.setFirstName("клава");
@@ -22,14 +22,13 @@ public class PersonService {
     }
 
     public List<Person> createFakePersonsforList() {
-        List<Person> persons = new ArrayList<>();
         boolean switchButton2 = false;
-        CreateFakePersonServise createFakePersonServise = new CreateFakePersonServise();
-        for (int i = 1; i <= 500; i++) {
+        CreateFakeFieldServise createFakeFieldServise = new CreateFakeFieldServise();
+        for (int i = 1; i <= 10; i++) {
             Person person = new Person();
-            person.setFirstName(createFakePersonServise.createFakeField());
-            person.setLastName(createFakePersonServise.createFakeField());
-            person.setLogin(createFakePersonServise.createFakeField());
+            person.setFirstName(createFakeFieldServise.createFakeField());
+            person.setLastName(createFakeFieldServise.createFakeField());
+            person.setLogin(createFakeFieldServise.createFakeField());
             persons.add(person);
 
             if (switchButton2 == true) {
@@ -38,20 +37,22 @@ public class PersonService {
         }
         return persons;
     }
-    public void getPersonList(List<Person> personList){
+    public List<Person> getPersons() {
+        return persons;
+    }
+    public void printPersonList(List<Person> personList){
         personList.forEach(person -> {
             System.out.println(person.toString());
         });
     }
 
 
-    public Person createPersonFromRandom() {
+    public Person randomPersonGenerator() {
         Person person = new Person();
-        CreateFakePersonServise createFakePersonServise = new CreateFakePersonServise();
-        person.setFirstName(createFakePersonServise.createFakeField());
-        person.setLastName(createFakePersonServise.createFakeField());
-        person.setLogin(createFakePersonServise.createFakeField());
+        CreateFakeFieldServise createFakeFieldServise = new CreateFakeFieldServise();
+        person.setFirstName(createFakeFieldServise.createFakeField());
+        person.setLastName(createFakeFieldServise.createFakeField());
+        person.setLogin(createFakeFieldServise.createFakeField());
         return person;
     }
-
 }

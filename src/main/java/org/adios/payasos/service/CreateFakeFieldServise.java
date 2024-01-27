@@ -2,7 +2,7 @@ package org.adios.payasos.service;
 
 import java.util.Random;
 
-public class CreateFakePersonServise {
+public class CreateFakeFieldServise {
     public String createFakeField(){
         Random random = new Random();
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
