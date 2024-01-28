@@ -1,7 +1,7 @@
 package org.adios.payasos.controller;
 
 import org.adios.payasos.entity.Person;
-import org.adios.payasos.service.ConsoleService;
+import org.adios.payasos.service.SetPresonService;
 import org.adios.payasos.service.MassagesServise;
 import org.adios.payasos.service.PersonService;
 
@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Dispatcher {
     Scanner scanner = new Scanner(System.in);
     PersonService personService = new PersonService();
-    ConsoleService consoleService = new ConsoleService();
+    SetPresonService setPresonService = new SetPresonService();
     MassagesServise massagesServise = new MassagesServise();
 
     public void invoke() {
@@ -23,9 +23,9 @@ public class Dispatcher {
                 case "create":
                     boolean switchButton = false;
                     if (switchButton == true) {
-                        consoleService.setPlayerNickname();
-                        consoleService.setPlayerLogin();
-                        consoleService.setPlayerPasword();
+                        setPresonService.setPlayerNickname();
+                        setPresonService.setPlayerLogin();
+                        setPresonService.setPlayerPasword();
                     }
 
                     Person person = personService.createPersonFromConstructor("чики", "бамбони", "залупа");
@@ -35,11 +35,14 @@ public class Dispatcher {
                     personService.printPersonList(fakePersonsforList);
                     System.out.println("\n\n");
                     break;
-                case "addmsg":
+                case "addmassage":
                     massagesServise.addPersonMassege(personService.getPersons());
                     break;
-                case "read":
-                    massagesServise.readPersonMassages(personService.getPersons());
+                case "readallmassage":
+                    massagesServise.readAllMassages(personService.getPersons());
+                    break;
+                case "raedmassage":
+                    massagesServise.readSpecificMassage(personService.getPersons());
                     break;
                 case "exit":
                     return;

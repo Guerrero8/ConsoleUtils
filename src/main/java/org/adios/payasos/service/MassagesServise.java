@@ -7,16 +7,7 @@ import java.util.Scanner;
 
 public class MassagesServise {
     Scanner scanner = new Scanner(System.in);
-    public void readPersonMassages(List<Person> persons) {
-        {
-            for (Person person : persons) {
-                System.out.println("FirstName:" + person.getFirstName()
-                        + "Lastname:" + person.getLastName()
-                        + "Login:" + person.getLogin()
-                        + "Massages:" + person.getMasseges());
-            }
-        }
-    }
+
     public void addPersonMassege(List<Person> persons) {
         if (persons.isEmpty()) {
             System.out.println("Вы еще не создали пользователей, так что вам некому добавить сообщение.");
@@ -42,4 +33,33 @@ public class MassagesServise {
             }
         }
     }
+
+    public void readAllMassages(List<Person> persons) {
+        {
+            for (Person person : persons) {
+                System.out.println("FirstName:" + person.getFirstName()
+                        + "Lastname:" + person.getLastName()
+                        + "Login:" + person.getLogin()
+                        + "Massages:" + person.getMasseges());
+            }
+        }
+    }
+
+    public void readSpecificMassage(List<Person> persons) {
+        System.out.println("Введите сообщение которое хотите найти.");
+        String desiredMassage = scanner.nextLine();
+        boolean found = false;
+        for (Person person : persons) {
+            String personMessage = person.getMasseges().toString();
+            if (personMessage.contains(desiredMassage)) {
+                System.out.println("Сообщение найдено у " + person.getFirstName().toString() + ": " + personMessage);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Сообщение не найдено.");
+        }
+    }
 }
+

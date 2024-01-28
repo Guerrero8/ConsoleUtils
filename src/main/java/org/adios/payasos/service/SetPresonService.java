@@ -1,13 +1,8 @@
 package org.adios.payasos.service;
 
-import org.adios.payasos.entity.Person;
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-public class ConsoleService {
+public class SetPresonService {
     private final Scanner scanner = new Scanner(System.in);
 
     public void setPlayerNickname() {
