@@ -1,6 +1,7 @@
 package org.adios.payasos.controller;
 
 import org.adios.payasos.entity.Person;
+import org.adios.payasos.service.FileRecord;
 import org.adios.payasos.service.SetPresonService;
 import org.adios.payasos.service.MassagesServise;
 import org.adios.payasos.service.PersonService;
@@ -13,36 +14,37 @@ public class Dispatcher {
     Scanner scanner = new Scanner(System.in);
     PersonService personService = new PersonService();
     SetPresonService setPresonService = new SetPresonService();
-    MassagesServise massagesServise = new MassagesServise();
+    MassagesServise messagesServise = new MassagesServise();
+    FileRecord fileRecord = new FileRecord();
 
     public void invoke() {
         while (true) {
-            String switchButton1 = scanner.nextLine().toLowerCase();
+            fileRecord.fileRecordPersons(personService.getPersons());
+            String switchButton0 = scanner.nextLine().toLowerCase();
 
-            switch (switchButton1) {
+            switch (switchButton0) {
                 case "create":
-                    boolean switchButton = false;
-                    if (switchButton == true) {
+                    boolean switchButton1 = false;
+                    if (switchButton1 == true) {
                         setPresonService.setPlayerNickname();
                         setPresonService.setPlayerLogin();
                         setPresonService.setPlayerPasword();
                     }
-
-                    Person person = personService.createPersonFromConstructor("чики", "бамбони", "залупа");
-                    Person person1 = personService.createPersonFromSetters();
-                    Person person2 = personService.randomPersonGenerator();
                     List<Person> fakePersonsforList = personService.createFakePersonsforList();
                     personService.printPersonList(fakePersonsforList);
                     System.out.println("\n\n");
                     break;
-                case "addmassage":
-                    massagesServise.addPersonMassege(personService.getPersons());
+                case "addmessage":
+                    messagesServise.addPersonMessege(personService.getPersons());
                     break;
-                case "readallmassage":
-                    massagesServise.readAllMassages(personService.getPersons());
+                case "readallmessage":
+                    messagesServise.readAllMessages(personService.getPersons());
                     break;
-                case "raedmassage":
-                    massagesServise.readSpecificMassage(personService.getPersons());
+                case "raedmessage":
+                    messagesServise.readSpecificMessage(personService.getPersons());
+                    break;
+                case "deletemessage":
+                    messagesServise.deleteSpecificMassage(personService.getPersons());
                     break;
                 case "exit":
                     return;
