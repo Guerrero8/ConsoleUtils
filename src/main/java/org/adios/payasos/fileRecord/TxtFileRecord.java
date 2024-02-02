@@ -1,28 +1,24 @@
-package org.adios.payasos.service;
+package org.adios.payasos.fileRecord;
 
 import lombok.SneakyThrows;
 import org.adios.payasos.entity.Person;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class FileRecord {
+public class TxtFileRecord {
     @SneakyThrows
     public File createTxtFile() {
-        File fileForPersons = new File("fileForPersons.txt");
-        if (!fileForPersons.exists()) {
-            fileForPersons.createNewFile();
+        File txtFile = new File("txtFile.txt");
+        if (!txtFile.exists()) {
+            txtFile.createNewFile();
         }
-        return fileForPersons;
+        return txtFile;
     }
 
     @SneakyThrows
-    public void fileRecordPersons(List<Person> persons) {
+    public void txtRecord(List<Person> persons) {
 
         PrintWriter fileWriter = new PrintWriter(createTxtFile());
         for (Person person : persons) {

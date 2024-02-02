@@ -1,25 +1,26 @@
 package org.adios.payasos.controller;
 
 import org.adios.payasos.entity.Person;
-import org.adios.payasos.service.FileRecord;
+import org.adios.payasos.fileRecord.JsonFileRecord;
 import org.adios.payasos.service.SetPresonService;
 import org.adios.payasos.service.MassagesServise;
 import org.adios.payasos.service.PersonService;
+import org.adios.payasos.storage.PersonStorage;
 
 import java.util.List;
 import java.util.Scanner;
 
 
 public class Dispatcher {
-    Scanner scanner = new Scanner(System.in);
-    PersonService personService = new PersonService();
-    SetPresonService setPresonService = new SetPresonService();
-    MassagesServise messagesServise = new MassagesServise();
-    FileRecord fileRecord = new FileRecord();
-
+    private final Scanner scanner = new Scanner(System.in);
+    private final PersonService personService = new PersonService();
+    private final SetPresonService setPresonService = new SetPresonService();
+    private final MassagesServise messagesServise = new MassagesServise();
+    private final List<Person> persons = PersonStorage.getPersons();
+    private final JsonFileRecord jsonFileRecord = new JsonFileRecord();
     public void invoke() {
         while (true) {
-            fileRecord.fileRecordPersons(personService.getPersons());
+            jsonFileRecord.jsonRecord(persons);
             String switchButton0 = scanner.nextLine().toLowerCase();
 
             switch (switchButton0) {
@@ -35,22 +36,19 @@ public class Dispatcher {
                     System.out.println("\n\n");
                     break;
                 case "addmessage":
-                    messagesServise.addPersonMessege(personService.getPersons());
+                    messagesServise.addPersonMessege(persons);
                     break;
                 case "readallmessage":
-                    messagesServise.readAllMessages(personService.getPersons());
+                    messagesServise.readAllMessages(persons);
                     break;
                 case "raedmessage":
-                    messagesServise.readSpecificMessage(personService.getPersons());
+                    messagesServise.readSpecificMessage(persons);
                     break;
                 case "deletemessage":
-                    messagesServise.deleteSpecificMassage(personService.getPersons());
+                    messagesServise.deleteSpecificMassage(persons);
                     break;
                 case "exit":
                     return;
-                case "help":
-                    System.out.println("create - создание пользователей \n" +
-                            "exit - выход из программы \n");
             }
         }
     }

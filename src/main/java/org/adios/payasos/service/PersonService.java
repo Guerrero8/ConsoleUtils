@@ -2,6 +2,7 @@ package org.adios.payasos.service;
 
 import lombok.Data;
 import org.adios.payasos.entity.Person;
+import org.adios.payasos.storage.PersonStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 @Data
 public class PersonService {
     Scanner scanner = new Scanner(System.in);
-    List<Person> persons = new ArrayList<>();
+    List<Person> persons = PersonStorage.getPersons();
     public List<Person> createFakePersonsforList() {
         boolean switchButton2 = false;
         CreateFakeFieldServise createFakeFieldServise = new CreateFakeFieldServise();
@@ -27,8 +28,8 @@ public class PersonService {
         }
         return persons;
     }
-    public void printPersonList(List<Person> personList){
-        personList.forEach(person -> {
+    public void printPersonList(List<Person> persons){
+        persons.forEach(person -> {
             System.out.println(person.toString());
         });
     }
