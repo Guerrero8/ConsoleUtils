@@ -1,11 +1,10 @@
 package org.adios.payasos.controller;
 
 import org.adios.payasos.entity.Person;
-import org.adios.payasos.fileRecord.JsonFileRecord;
+import org.adios.payasos.file.writing.FileServise;
 import org.adios.payasos.service.SetPresonService;
 import org.adios.payasos.service.MassagesServise;
 import org.adios.payasos.service.PersonService;
-import org.adios.payasos.storage.PersonStorage;
 
 import java.util.List;
 import java.util.Scanner;
@@ -16,11 +15,9 @@ public class Dispatcher {
     private final PersonService personService = new PersonService();
     private final SetPresonService setPresonService = new SetPresonService();
     private final MassagesServise messagesServise = new MassagesServise();
-    private final List<Person> persons = PersonStorage.getPersons();
-    private final JsonFileRecord jsonFileRecord = new JsonFileRecord();
+    private final FileServise fileServise = new FileServise();
     public void invoke() {
         while (true) {
-            jsonFileRecord.jsonRecord(persons);
             String switchButton0 = scanner.nextLine().toLowerCase();
 
             switch (switchButton0) {
@@ -36,16 +33,20 @@ public class Dispatcher {
                     System.out.println("\n\n");
                     break;
                 case "addmessage":
-                    messagesServise.addPersonMessege(persons);
+                    messagesServise.addPersonMessege();
                     break;
                 case "readallmessage":
-                    messagesServise.readAllMessages(persons);
+                    messagesServise.readAllMessages();
                     break;
                 case "raedmessage":
-                    messagesServise.readSpecificMessage(persons);
+                    messagesServise.readSpecificMessage();
                     break;
                 case "deletemessage":
-                    messagesServise.deleteSpecificMassage(persons);
+                    messagesServise.deleteSpecificMassage();
+                    break;
+                case "json":
+                    fileServise.jsonRecord();
+                    fileServise.jsonReader();
                     break;
                 case "exit":
                     return;

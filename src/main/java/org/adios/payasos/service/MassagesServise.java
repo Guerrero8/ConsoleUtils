@@ -1,6 +1,7 @@
 package org.adios.payasos.service;
 
 import org.adios.payasos.entity.Person;
+import org.adios.payasos.storage.PersonStorage;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +11,9 @@ import static java.lang.String.format;
 public class MassagesServise {
     Scanner scanner = new Scanner(System.in);
 
-    public void addPersonMessege(List<Person> persons) {
+    private final List<Person> persons = PersonStorage.getPersons();
+
+    public void addPersonMessege() {
         if (persons.isEmpty()) {
             System.out.println("Вы еще не создали пользователей, так что вам некому добавить сообщение.");
         } else {
@@ -36,7 +39,7 @@ public class MassagesServise {
         }
     }
 
-    public void readAllMessages(List<Person> persons) {
+    public void readAllMessages() {
         {
             for (Person person : persons) {
                 System.out.println("FirstName:" + person.getFirstName()
@@ -47,7 +50,7 @@ public class MassagesServise {
         }
     }
 
-    public void readSpecificMessage(List<Person> persons) {
+    public void readSpecificMessage() {
         System.out.println("Введите сообщение которое хотите найти.");
         String desiredMessage = scanner.nextLine();
         int foundCount = 0;
@@ -69,7 +72,7 @@ public class MassagesServise {
             System.out.println("Сообщение не найдено.");
         }
     }
-    public void deleteSpecificMassage(List<Person> persons) {
+    public void deleteSpecificMassage() {
         System.out.println("Введите сообщение которое хотите удалить.");
         String deletedMessage = scanner.nextLine();
         for (Person person : persons) {
