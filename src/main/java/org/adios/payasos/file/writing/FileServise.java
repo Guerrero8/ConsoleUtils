@@ -1,5 +1,6 @@
 package org.adios.payasos.file.writing;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -8,11 +9,34 @@ import liquibase.repackaged.com.opencsv.CSVWriter;
 import lombok.SneakyThrows;
 import org.adios.payasos.entity.Person;
 import org.adios.payasos.storage.PersonStorage;
+
 import java.io.*;
 import java.util.List;
 
 public class FileServise {
     private final List<Person> persons = PersonStorage.getPersons();
+
+    @SneakyThrows
+    public void jsonReader() {
+        JsonParser jsonParser = new JsonParser();
+        FileReader fileReader = new FileReader("fileForPersons.json");
+        String jsonString = jsonParser.parse(fileReader).toString();
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(jsonString);
+        persons.clear();
+        for (JsonNode userNode : jsonNode) {
+            String firstName = userNode.get("firstName").asText();
+            String lastName = userNode.get("lastName").asText();
+            String login = userNode.get("login").asText();
+            Person person = new Person();
+            person.setFirstName(firstName);
+            person.setLastName(lastName);
+            person.setLogin(login);
+            persons.add(person);
+        }
+    }
+
+
     @SneakyThrows
     public void jsonRecord() {
         FileWriter fileWriter = new FileWriter(createJsonFile(), false);

@@ -18,6 +18,7 @@ public class Dispatcher {
     private final FileServise fileServise = new FileServise();
     public void invoke() {
         while (true) {
+            fileServise.jsonReader();
             String switchButton0 = scanner.nextLine().toLowerCase();
 
             switch (switchButton0) {
@@ -46,7 +47,8 @@ public class Dispatcher {
                     break;
                 case "json":
                     fileServise.jsonRecord();
-                    fileServise.jsonReader();
+                    break;
+                case "jsonclear":
                     break;
                 case "exit":
                     return;
