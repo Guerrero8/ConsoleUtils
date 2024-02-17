@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empty HTML Page with Button</title>
+    <style>
+        button {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<button>Нажми меня</button>
+<form action="/api/createPersons" method="get">
+    <button type="submit">Show chats with user</button>
+</form>
+<form action="/api/addMessege" method="get">
+    <button type="submit">Show hallo user</button>
+</form>
 </body>
 </html>

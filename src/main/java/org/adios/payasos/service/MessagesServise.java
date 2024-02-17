@@ -8,7 +8,8 @@ import java.util.Scanner;
 
 import static java.lang.String.format;
 
-public class MassagesServise {
+public class MessagesServise {
+
     Scanner scanner = new Scanner(System.in);
 
     private final List<Person> persons = PersonStorage.getPersons();

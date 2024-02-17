@@ -1,12 +1,10 @@
 package org.adios.payasos.controller;
 
-import org.adios.payasos.entity.Person;
 import org.adios.payasos.file.writing.FileServise;
-import org.adios.payasos.service.SetPresonService;
-import org.adios.payasos.service.MassagesServise;
+import org.adios.payasos.service.MessagesServise;
 import org.adios.payasos.service.PersonService;
+import org.adios.payasos.service.SetPresonService;
 
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -14,7 +12,7 @@ public class Dispatcher {
     private final Scanner scanner = new Scanner(System.in);
     private final PersonService personService = new PersonService();
     private final SetPresonService setPresonService = new SetPresonService();
-    private final MassagesServise messagesServise = new MassagesServise();
+    private final MessagesServise messagesServise = new MessagesServise();
     private final FileServise fileServise = new FileServise();
     public void invoke() {
         while (true) {
@@ -29,9 +27,7 @@ public class Dispatcher {
                         setPresonService.setPlayerLogin();
                         setPresonService.setPlayerPasword();
                     }
-                    List<Person> fakePersonsforList = personService.createFakePersonsforList();
-                    personService.printPersonList(fakePersonsforList);
-                    System.out.println("\n\n");
+                    personService.createFakePersonsforList();
                     break;
                 case "addmessage":
                     messagesServise.addPersonMessege();
