@@ -1,4 +1,4 @@
-package org.adios.payasos.controller.Spring.Controller;
+package org.adios.payasos.controller.Spring.controller;
 
 
 import org.adios.payasos.entity.Person;
