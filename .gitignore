@@ -11,6 +11,7 @@ target/
 *.iws
 *.iml
 *.ipr
+*.fileWithPersons.json
 
 ### Eclipse ###
 .apt_generated

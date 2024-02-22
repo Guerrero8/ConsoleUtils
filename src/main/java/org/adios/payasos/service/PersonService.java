@@ -3,12 +3,13 @@ package org.adios.payasos.service;
 import lombok.Data;
 import org.adios.payasos.entity.Person;
 import org.adios.payasos.storage.PersonStorage;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 @Data
+@Service
 public class PersonService {
     Scanner scanner = new Scanner(System.in);
     List<Person> persons = PersonStorage.getPersons();
