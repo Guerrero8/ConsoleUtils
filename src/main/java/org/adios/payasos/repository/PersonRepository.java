@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     Person findByFirstName(String firstName);
     void deletePersonByFirstName(String firstName);
-
 }
