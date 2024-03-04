@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import static java.lang.String.format;
 
-public class MessagesServise {
+public class MessagesService {
 
     Scanner scanner = new Scanner(System.in);
 

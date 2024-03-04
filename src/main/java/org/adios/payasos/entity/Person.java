@@ -1,6 +1,10 @@
 package org.adios.payasos.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,7 +28,7 @@ public class Person {
     @Transient
     List<String> messeges = new ArrayList<>();
 
-    public Person(String name, String firstName, String lastName, String login) {
+    public Person(String firstName, String lastName, String login) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
