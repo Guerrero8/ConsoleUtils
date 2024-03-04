@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
-import liquibase.repackaged.com.opencsv.CSVWriter;
 import lombok.SneakyThrows;
 import org.adios.payasos.entity.Person;
 import org.adios.payasos.storage.PersonStorage;
@@ -70,26 +69,5 @@ public class FileServise {
             txtFile.createNewFile();
         }
         return txtFile;
-    }
-
-    @SneakyThrows
-    public void csvRecord() {
-        CSVWriter csvWriter = new CSVWriter(new PrintWriter(createCsvFIle()));
-        for (Person person : persons) {
-            String[] record = {person.getFirstName(),
-                    person.getLastName(),
-                    person.getLogin()};
-            csvWriter.writeNext(record);
-        }
-        csvWriter.close();
-    }
-
-    @SneakyThrows
-    public File createCsvFIle() {
-        File csvFile = new File("fileForPersons.csv");
-        if (!csvFile.exists()) {
-            csvFile.createNewFile();
-        }
-        return csvFile;
     }
 }

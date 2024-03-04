@@ -3,7 +3,6 @@ package org.adios.payasos.controller;
 import org.adios.payasos.file.writing.FileServise;
 import org.adios.payasos.service.MessagesServise;
 import org.adios.payasos.service.PersonService;
-import org.adios.payasos.service.SetPresonService;
 
 import java.util.Scanner;
 
@@ -11,7 +10,6 @@ import java.util.Scanner;
 public class Dispatcher {
     private final Scanner scanner = new Scanner(System.in);
     private final PersonService personService = new PersonService();
-    private final SetPresonService setPresonService = new SetPresonService();
     private final MessagesServise messagesServise = new MessagesServise();
     private final FileServise fileServise = new FileServise();
     public void invoke() {
@@ -20,13 +18,7 @@ public class Dispatcher {
 
             switch (switchButton0) {
                 case "create":
-                    boolean switchButton1 = false;
-                    if (switchButton1 == true) {
-                        setPresonService.setPlayerNickname();
-                        setPresonService.setPlayerLogin();
-                        setPresonService.setPlayerPasword();
-                    }
-                    personService.createFakePersonsforList();
+                    personService.createFakePersons();
                     break;
                 case "addmessage":
                     messagesServise.addPersonMessege();

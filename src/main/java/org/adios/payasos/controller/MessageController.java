@@ -16,10 +16,10 @@ public class MessageController {
     List<Person> persons = PersonStorage.getPersons();
 
     @PostMapping("/addMessage")
-    public List<Person> addMessage(@RequestBody CreateMessageRequest createMessageRequest) {
+    public List<Person> addMessage(@RequestParam("firstName") String firstName, @RequestParam("message") String message) {
         for (Person person : persons) {
-            if (person.getFirstName().equalsIgnoreCase(createMessageRequest.getFiendField())) {
-                person.getMesseges().add(createMessageRequest.getMessage());
+            if (person.getFirstName().equalsIgnoreCase(firstName)) {
+                person.getMesseges().add(message);
                 break;
             }
         }
@@ -37,7 +37,7 @@ public class MessageController {
         return result;
     }
 
-    @PostMapping("/deleteMessage")
+    @DeleteMapping("/deleteMessage")
     public List<Person> deleteMessage(@RequestBody CreateMessageRequest createMessageRequest) {
         persons.forEach(person -> person.getMesseges().removeIf(message -> message.equals(createMessageRequest.getMessage())));
         return PersonStorage.getPersons();
